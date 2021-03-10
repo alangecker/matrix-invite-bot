@@ -26,6 +26,12 @@ AutojoinRoomsMixin.setupOnClient(client);
 
 client.on("room.message", handleCommand);
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+})
+
 app.post('/invite', async function (req,res) {
     if(!req.body 
         || !req.body.inviteCode
@@ -38,6 +44,7 @@ app.post('/invite', async function (req,res) {
             success: false,
             error: 'missing or invalid fields (inviteCode, matrixId)'
         })
+        return
     }
     
     const matrixId = req.body.matrixId
@@ -49,6 +56,7 @@ app.post('/invite', async function (req,res) {
             success: false,
             error: 'invalid invite code'
         })
+        return
     }
     const rooms = botStorage.getRooms(inviteCode)
 
@@ -58,6 +66,7 @@ app.post('/invite', async function (req,res) {
             success: false,
             error: 'invalid matrix id'
         })
+        return
     }
 
     for(let roomId of rooms) {
@@ -80,11 +89,12 @@ app.post('/invite', async function (req,res) {
             })
             return
         }
-        botStorage.addInvitedId(inviteCode, matrixId)
-        res.send({
-            success: true,
-        })
     }
+    
+    botStorage.addInvitedId(inviteCode, matrixId)
+    res.send({
+        success: true,
+    })
 })
 
 client.start().then(() => {

@@ -3,6 +3,11 @@ _not beautiful, but working_
 
 Handles a list of invite codes with rooms and offers an HTTP API to automatically invite a matixId to all these rooms with a provided invite code.
 
+## future
+- the storing of a set of rooms becomes absolete [MSC1772: Matrix Spaces](https://github.com/matrix-org/matrix-doc/pull/1772), since it offers auto-join to multiple rooms inside spaces.
+ 
+
+
 ## setup
 - set homeserver and access token in `config.ts`
 - `$ yarn install`

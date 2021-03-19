@@ -32,6 +32,17 @@ app.use(function(req, res, next) {
     next();
 })
 
+app.get('/health', async function (req, res, next) {
+    const presence = await client.getPresenceStatus()
+    const userId = await client.getUserId()
+    if(presence && presence.state == 'online' && userId) {
+        res.send({success: true})
+    } else {
+        res.status(500)
+        res.send({success: false, presence: presence.state})
+    }
+})
+
 app.post('/invite', async function (req,res) {
     if(!req.body 
         || !req.body.inviteCode

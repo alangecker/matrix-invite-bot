@@ -79,6 +79,9 @@ export default function({
         await client.setUserPowerLevel(senderId, roomId, 100)
         const widgetId = await addEdumeetWidget(client, roomId)
         await setWidgetActive(client, roomId, widgetId)
+
+        // store room
+        botStorage.addRoom(inviteCode, roomId)
     }
 
     async function handleRoomAdd(senderId: string, inviteCode: string, roomId: string, inRoomId: string) {

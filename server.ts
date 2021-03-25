@@ -50,7 +50,7 @@ setInterval( async () => {
     for(let inviteCode of inviteCodes) {
         await updateInviteCodeElements(inviteCode)
     } 
-}, 1000)
+}, 30*1000)
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");

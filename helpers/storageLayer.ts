@@ -1,7 +1,7 @@
 import {
     SimpleFsStorageProvider,
 } from "matrix-bot-sdk";
-export default function createSotrageLayer(storage: SimpleFsStorageProvider) {
+export default function createStorageLayer(storage: SimpleFsStorageProvider) {
     let data: {
         [inviteCode:string]: {
             adminIds: string[],
@@ -32,6 +32,10 @@ export default function createSotrageLayer(storage: SimpleFsStorageProvider) {
         isInviteCode(inviteCode: string) {
             load()
             return !!data[inviteCode]
+        },
+        getAllInviteCodes() {
+            load()
+            return Object.keys(data)
         },
         addAdmin(inviteCode: string, matrixId: string) {
             load()
@@ -81,6 +85,14 @@ export default function createSotrageLayer(storage: SimpleFsStorageProvider) {
             load()
             if(!data[inviteCode]) throw new Error('invite code invalid')
             return data[inviteCode].invitedIds
+        },
+        getTotalInvitedCount() {
+            load()
+            let count = 0
+            for(let code in data) {
+                count +=  data[code].invitedIds.length
+            }
+            return count
         }
     }
 }

@@ -685,10 +685,10 @@ make-error@^1.1.1:
   resolved "https://registry.yarnpkg.com/make-error/-/make-error-1.3.6.tgz#2eb2e37ea9b67c4891f684a1394799af484cf7a2"
   integrity sha512-s8UhlNe7vPKomQhC1qFelMokr/Sc3AgNbso3n74mVPA5LTZwkB9NlXf4XPamLxJE8h0gh73rM94xvwRT2CVInw==
 
-matrix-bot-sdk@^0.5.16:
-  version "0.5.16"
-  resolved "https://registry.yarnpkg.com/matrix-bot-sdk/-/matrix-bot-sdk-0.5.16.tgz#5050fdf91b361c63d843ed398fa34e6a707725ea"
-  integrity sha512-Bx+ABWOQMrq5s2d2MDK2JEGRArjkacu2Fu+wy38bB4AKegKksI0eNbM3s8bExwbrmeafBncDIGx+I3ZASq+JwQ==
+matrix-bot-sdk@^0.5.17:
+  version "0.5.17"
+  resolved "https://registry.yarnpkg.com/matrix-bot-sdk/-/matrix-bot-sdk-0.5.17.tgz#ce5d1eb9e8fef5c46f0e553493798bf0cd98ea00"
+  integrity sha512-6Ze0D9OmE/ssOVSn7yIbApjZIKaCrRT2H0GVxOVVSUbRnNHSR0pgfCofO18SSI9zWhzpugiKyocZxNesrppa4A==
   dependencies:
     "@types/express" "^4.17.7"
     chalk "^4.1.0"
